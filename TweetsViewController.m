@@ -7,6 +7,7 @@
 //
 
 #import "TweetsViewController.h"
+#import "ComposeTweetViewController.h"
 
 @interface TweetsViewController ()
 
@@ -40,6 +41,8 @@
 - (void)newTweet
 {
     NSLog(@"new tweet");
+    ComposeTweetViewController *cvc = [[ComposeTweetViewController alloc] init];
+    [self.navigationController pushViewController:cvc animated:YES];
 }
 
 @end
