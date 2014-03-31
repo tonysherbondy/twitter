@@ -10,6 +10,7 @@
 #import "TweetsViewController.h"
 #import "LoginViewController.h"
 #import "TwitterClient.h"
+#import "User.h"
 
 @implementation AppDelegate
 
@@ -19,15 +20,26 @@
 
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
     
+    User *currentUser = [User currentUser];
+    if (currentUser) {
+        [self loggedInView];
+    }
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
 
+- (void)loggedInView
+{
+    TweetsViewController *tvc = [[TweetsViewController alloc] init];
+    [((UINavigationController *)self.window.rootViewController) pushViewController:tvc animated:YES];
+}
+
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
 	return [[TwitterClient instance] authorizationCallbackURL:url onSuccess:^{
-//        [self updateRootViewController];
+        [self loggedInView];
     }];
 }
 

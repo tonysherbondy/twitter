@@ -1,5 +1,5 @@
 //
-//  User.h
+//  Tweet.h
 //  twitter
 //
 //  Created by Anthony Sherbondy on 3/31/14.
@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
-@interface User : NSObject
-+ (User *)currentUser;
-+ (void)setCurrentUser:(User *)user;
-+ (void)signout;
-
-@property (nonatomic, strong) NSString *name;
-- (NSDictionary *)dictionary;
+@interface Tweet : NSObject
 - (id)initWithDictionary:(NSDictionary *)dictionary;
++ (NSArray *)arrayFromJSON:(NSArray *)jsonArray;
+
+@property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) User *author;
 @end

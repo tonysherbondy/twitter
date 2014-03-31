@@ -73,17 +73,14 @@
                                                                   [User setCurrentUser:user];
                                                                   NSLog(@"new user = %@", [User currentUser].name);
                                                               }
-                                                              
+                                                              if (completion) {
+                                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                                      completion();
+                                                                  });
+                                                              }
                                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                               NSLog(@"response error");
                                                           }];
-////														  [IDZUser currentUser];
-//                                                          
-//														  if (completion) {
-//															  dispatch_async(dispatch_get_main_queue(), ^{
-//                                                                  completion();
-//															  });
-//														  }
 													  }
 													  failure:^(NSError *error) {
 														  NSLog(@"Error: %@", error.localizedDescription);

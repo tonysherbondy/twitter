@@ -30,6 +30,7 @@
 		BBFCC16918EA037200705618 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16718EA037200705618 /* LoginViewController.m */; };
 		BBFCC16A18EA037200705618 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFCC16818EA037200705618 /* LoginViewController.xib */; };
 		BBFCC16E18EA1C4300705618 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16D18EA1C4300705618 /* User.m */; };
+		BBFCC17118EA2DEB00705618 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC17018EA2DEB00705618 /* Tweet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		BBFCC16818EA037200705618 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		BBFCC16C18EA1C4300705618 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		BBFCC16D18EA1C4300705618 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		BBFCC16F18EA2DEB00705618 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		BBFCC17018EA2DEB00705618 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,8 @@
 			children = (
 				BBFCC16C18EA1C4300705618 /* User.h */,
 				BBFCC16D18EA1C4300705618 /* User.m */,
+				BBFCC16F18EA2DEB00705618 /* Tweet.h */,
+				BBFCC17018EA2DEB00705618 /* Tweet.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBFCC17118EA2DEB00705618 /* Tweet.m in Sources */,
 				BBFCC16E18EA1C4300705618 /* User.m in Sources */,
 				BB8700FB18E8ACCB005A0623 /* TweetViewController.m in Sources */,
 				BB8700D418E8A957005A0623 /* AppDelegate.m in Sources */,

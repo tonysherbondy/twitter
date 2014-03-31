@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "TwitterClient.h"
 
 @implementation User
 
@@ -26,7 +27,18 @@ static User *currentUser = nil;
     
     // Save to NSUserDefaults
     NSDictionary *dictionary = [user dictionary];
-    [[NSUserDefaults standardUserDefaults] setObject:dictionary forKey:@"current_user"];
+    if (dictionary) {
+        [[NSUserDefaults standardUserDefaults] setObject:dictionary forKey:@"current_user"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"current_user"];
+    }
+}
+
++ (void)signout
+{
+    // Need to update the app as soon as we sign out
+    [[TwitterClient instance] deauthorize];
+    [User setCurrentUser:nil];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary

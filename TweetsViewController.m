@@ -8,9 +8,14 @@
 
 #import "TweetsViewController.h"
 #import "ComposeTweetViewController.h"
+#import "User.h"
+#import "TwitterClient.h"
+#import "Tweet.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface TweetsViewController ()
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *tweets;
 @end
 
 @implementation TweetsViewController
@@ -19,7 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self loadTimeline];
     }
     return self;
 }
@@ -33,9 +38,30 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(newTweet)];
 }
 
+- (void)loadTimeline
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading...";
+    [[TwitterClient instance] timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // on main queue change the array of tweet data
+        __weak TweetsViewController *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"%@", responseObject);
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            weakSelf.tweets = [Tweet arrayFromJSON:responseObject];
+            [weakSelf.tableView reloadData];
+        });
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"load timeline error");
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
 - (void)signout
 {
     NSLog(@"sign out");
+    [User signout];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)newTweet
