@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TweetsViewController.h"
 #import "LoginViewController.h"
+#import "TwitterClient.h"
 
 @implementation AppDelegate
 
@@ -21,6 +22,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+	return [[TwitterClient instance] authorizationCallbackURL:url onSuccess:^{
+//        [self updateRootViewController];
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

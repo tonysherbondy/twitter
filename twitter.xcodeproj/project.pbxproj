@@ -29,6 +29,7 @@
 		BBFCC16518EA02FE00705618 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16418EA02FE00705618 /* TwitterClient.m */; };
 		BBFCC16918EA037200705618 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16718EA037200705618 /* LoginViewController.m */; };
 		BBFCC16A18EA037200705618 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFCC16818EA037200705618 /* LoginViewController.xib */; };
+		BBFCC16E18EA1C4300705618 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16D18EA1C4300705618 /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		BBFCC16618EA037200705618 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		BBFCC16718EA037200705618 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BBFCC16818EA037200705618 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		BBFCC16C18EA1C4300705618 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		BBFCC16D18EA1C4300705618 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 		BB8700B718E8A957005A0623 = {
 			isa = PBXGroup;
 			children = (
+				BBFCC16B18EA1C3400705618 /* Models */,
 				BBFCC16218EA02EB00705618 /* API */,
 				BB8700F718E8AA20005A0623 /* View Controllers */,
 				BB8700C918E8A957005A0623 /* twitter */,
@@ -201,6 +205,15 @@
 				BBFCC16418EA02FE00705618 /* TwitterClient.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		BBFCC16B18EA1C3400705618 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BBFCC16C18EA1C4300705618 /* User.h */,
+				BBFCC16D18EA1C4300705618 /* User.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBFCC16E18EA1C4300705618 /* User.m in Sources */,
 				BB8700FB18E8ACCB005A0623 /* TweetViewController.m in Sources */,
 				BB8700D418E8A957005A0623 /* AppDelegate.m in Sources */,
 				BB8700D018E8A957005A0623 /* main.m in Sources */,
