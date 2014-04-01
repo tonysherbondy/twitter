@@ -12,6 +12,7 @@
 #import "TwitterClient.h"
 #import "Tweet.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "TweetCell.h"
 
 @interface TweetsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -40,7 +41,9 @@
     
     // Table
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    self.tableView.delegate = self;
+    UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
+    [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
 }
 
 - (void)loadTimeline
@@ -83,9 +86,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.textLabel.text = ((Tweet *)self.tweets[indexPath.row]).text;
+    TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
+    cell.tweet = self.tweets[indexPath.row];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150;
 }
 
 @end

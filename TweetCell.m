@@ -32,4 +32,12 @@
     // Configure the view for the selected state
 }
 
+- (void)setTweet:(Tweet *)tweet
+{
+    // Update the UI when we set the tweet
+    self.tweetTextLabel.text = tweet.text;
+    self.authorNameLabel.text = tweet.author.name;
+    _tweet = tweet;
+}
+
 @end
