@@ -59,7 +59,7 @@
         self.textLabel.text = tweet.text;
         self.authorNameLabel.text = tweet.author.name;
         self.authorHandleLabel.text = [NSString stringWithFormat:@"@%@", tweet.author.handle];
-        self.dateLabel.text = tweet.date.description;
+        self.dateLabel.text = tweet.fullDisplayDate;
         [self.authorImageView setImageWithURL:[NSURL URLWithString:tweet.author.imageURL]];
         
         // Round the profile image corners

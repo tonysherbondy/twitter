@@ -64,4 +64,15 @@
     return _sinceDate;
 }
 
+@synthesize fullDisplayDate = _fullDisplayDate;
+- (NSString *)fullDisplayDate
+{
+    if (!_fullDisplayDate) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"M/d/yy, h:mm a"];
+        _fullDisplayDate = [formatter stringFromDate:self.date];
+    }
+    return _fullDisplayDate;
+}
+
 @end

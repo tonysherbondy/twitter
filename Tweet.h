@@ -17,4 +17,5 @@
 @property (nonatomic, strong) User *author;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong, readonly) NSString *sinceDate;
+@property (nonatomic, strong, readonly) NSString *fullDisplayDate;
 @end
