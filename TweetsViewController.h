@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TweetsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
+- (void)refreshUI;
 @end

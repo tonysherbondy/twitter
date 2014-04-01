@@ -131,6 +131,9 @@
                     <state key="normal" image="retweet">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="retweetButtonTouch:" destination="-1" eventType="touchUpInside" id="neK-W2-v0c"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEX-F2-JOJ">
                     <rect key="frame" x="268" y="256" width="32" height="32"/>

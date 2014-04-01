@@ -21,9 +21,12 @@
 @property (nonatomic, strong, readonly) NSString *fullDisplayDate;
 @property (nonatomic) BOOL isRetweeted;
 @property (nonatomic) NSInteger retweetCount;
+@property (nonatomic, strong) NSString *retweetId;
 @property (nonatomic) BOOL isFavorited;
 @property (nonatomic) NSInteger favoriteCount;
 
 - (void)addToFavorites;
 - (void)removeFromFavorites;
+- (void)retweet;
+- (void)unretweet;
 @end

@@ -95,7 +95,7 @@
 - (void)timelineWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
     [self GET:@"1.1/statuses/home_timeline.json"
-   parameters:nil
+   parameters:@{@"include_my_retweet": @(YES)}
       success:success
       failure:failure];
 }

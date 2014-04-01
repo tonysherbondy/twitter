@@ -18,6 +18,7 @@
 @interface TweetsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *tweets;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation TweetsViewController
@@ -45,6 +46,11 @@
     self.tableView.delegate = self;
     UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
     [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
+    
+    // Refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
 }
 
 - (void)loadTimeline
@@ -56,10 +62,12 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.tweets = [Tweet arrayFromJSON:responseObject];
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"load timeline error");
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -75,6 +83,11 @@
     NSLog(@"new tweet");
     ComposeTweetViewController *cvc = [[ComposeTweetViewController alloc] init];
     [self.navigationController pushViewController:cvc animated:YES];
+}
+
+- (void)refreshUI
+{
+    [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

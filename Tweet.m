@@ -24,6 +24,10 @@
         self.isRetweeted = [dictionary[@"retweeted"] boolValue];
         self.retweetCount = [dictionary[@"retweet_count"] integerValue];
         
+        if (dictionary[@"current_user_retweet"]) {
+			self.retweetId = dictionary[@"current_user_retweet"][@"id_str"];
+		}
+        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"EEE MMM dd HH:mm:ss Z yyyy"];
         self.date = [formatter dateFromString:dictionary[@"created_at"]];
@@ -111,6 +115,47 @@
                                }];
 
     }
+}
+
+- (void)retweet
+{
+	if (!self.isRetweeted) {
+		self.isRetweeted = YES;
+		self.retweetCount++;
+		
+		[[TwitterClient instance] POST:[NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", self.tweetId]
+         
+                            parameters:nil
+                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                   self.retweetId = responseObject[@"id_str"];
+                               }
+                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                   NSLog(@"error retweeting");
+                                   self.isRetweeted = NO;
+                                   self.retweetCount--;
+                               }];
+									
+	}
+}
+
+- (void)unretweet
+{
+	if (self.isRetweeted) {
+		self.isRetweeted = NO;
+		self.retweetCount--;
+		
+		[[TwitterClient instance] POST:[NSString stringWithFormat:@"1.1/statuses/destroy/%@.json", self.retweetId]
+									
+                            parameters:nil
+                               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                   self.retweetId = nil;
+                               }
+                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                   NSLog(@"error: %@", error);
+                                   self.isRetweeted = YES;
+                                   self.retweetCount++;
+                               }];
+	}
 }
 
 

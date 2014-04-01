@@ -8,6 +8,7 @@
 
 #import "TweetViewController.h"
 #import <UIImageView+AFNetworking.h>
+#import "TweetsViewController.h"
 
 @interface TweetViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *authorNameLabel;
@@ -89,6 +90,15 @@
         [self.tweet removeFromFavorites];
     } else {
         [self.tweet addToFavorites];
+    }
+    [self updateUI];
+}
+
+- (IBAction)retweetButtonTouch:(id)sender {
+    if (self.tweet.isRetweeted) {
+        [self.tweet unretweet];
+    } else {
+        [self.tweet retweet];
     }
     [self updateUI];
 }
