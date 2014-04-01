@@ -57,7 +57,10 @@ static User *currentUser = nil;
 
 - (NSDictionary *)dictionary
 {
-    return @{@"name":self.name};
+    return @{@"name":self.name,
+             @"id":@(self.userID),
+             @"profile_image_url":self.imageURL,
+             @"screen_name":self.handle};
 }
 
 @end

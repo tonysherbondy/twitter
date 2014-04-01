@@ -51,14 +51,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading...";
     [[TwitterClient instance] timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // on main queue change the array of tweet data
-        __weak TweetsViewController *weakSelf = self;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"%@", responseObject);
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            weakSelf.tweets = [Tweet arrayFromJSON:responseObject];
-            [weakSelf.tableView reloadData];
-        });
+
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        self.tweets = [Tweet arrayFromJSON:responseObject];
+        [self.tableView reloadData];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"load timeline error");
         [MBProgressHUD hideHUDForView:self.view animated:YES];

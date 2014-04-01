@@ -74,9 +74,7 @@
                                                                   NSLog(@"new user = %@", [User currentUser].name);
                                                               }
                                                               if (completion) {
-                                                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                                                      completion();
-                                                                  });
+                                                                  completion();
                                                               }
                                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                               NSLog(@"response error");
