@@ -62,6 +62,9 @@
         self.dateLabel.text = tweet.fullDisplayDate;
         [self.authorImageView setImageWithURL:[NSURL URLWithString:tweet.author.imageURL]];
         
+        self.numberRetweetsLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+        self.numberFavoritesLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+        
         // Round the profile image corners
         CALayer *layer = [self.authorImageView layer];
         layer.masksToBounds = YES;

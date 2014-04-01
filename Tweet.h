@@ -18,4 +18,8 @@
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong, readonly) NSString *sinceDate;
 @property (nonatomic, strong, readonly) NSString *fullDisplayDate;
+@property (nonatomic) BOOL isRetweeted;
+@property (nonatomic) NSInteger retweetCount;
+@property (nonatomic) BOOL isFavorited;
+@property (nonatomic) NSInteger favoriteCount;
 @end
