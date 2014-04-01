@@ -13,6 +13,7 @@
 #import "Tweet.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "TweetCell.h"
+#import "TweetViewController.h"
 
 @interface TweetsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -103,6 +104,15 @@
                           attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}
                              context:nil];
     return ceilf(textRect.size.height) + heightOffset;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    TweetViewController *tweetVC = [[TweetViewController alloc] init];
+    tweetVC.tweet = self.tweets[indexPath.row];
+    [self.navigationController pushViewController:tweetVC animated:YES];
 }
 
 @end

@@ -28,6 +28,14 @@
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(reply)];
+    
+    // update the ui based on the tweet
+}
+
+- (void)setTweet:(Tweet *)tweet
+{
+    // update the ui based on the tweet
+    _tweet = tweet;
 }
 
 - (void)reply
