@@ -8,6 +8,7 @@
 
 #import "Tweet.h"
 #import "User.h"
+#import "TwitterClient.h"
 
 @implementation Tweet
 
@@ -15,6 +16,7 @@
 {
     self = [super init];
     if (self) {
+        self.tweetId = dictionary[@"id_str"];
         self.text = dictionary[@"text"];
         self.author = [[User alloc] initWithDictionary:dictionary[@"user"]];
         self.isFavorited = [dictionary[@"favorited"] boolValue];
@@ -78,5 +80,38 @@
     }
     return _fullDisplayDate;
 }
+
+- (void)addToFavorites
+{
+    if (!self.isFavorited) {
+        self.isFavorited = YES;
+        self.favoriteCount++;
+        [[TwitterClient instance] POST:@"1.1/favorites/create.json"
+                            parameters:@{@"id":self.tweetId}
+                               success:nil
+                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                   NSLog(@"couldn't favorite");
+                                   self.favoriteCount--;
+                                   self.isFavorited = NO;
+                               }];
+    }
+}
+
+- (void)removeFromFavorites
+{
+    if (self.isFavorited) {
+        self.isFavorited = NO;
+        self.favoriteCount--;
+        [[TwitterClient instance] POST:@"1.1/favorites/destroy.json"
+                            parameters:@{@"id":self.tweetId}
+                               success:nil
+                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                   self.favoriteCount++;
+                                   self.isFavorited = YES;
+                               }];
+
+    }
+}
+
 
 @end

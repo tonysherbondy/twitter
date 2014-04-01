@@ -41,17 +41,17 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Reply" style:UIBarButtonItemStylePlain target:self action:@selector(reply)];
     
     // update the ui based on the tweet
-    [self updateUIWithTweet];
+    [self updateUI];
 }
 
 - (void)setTweet:(Tweet *)tweet
 {
     // update the ui based on the tweet
     _tweet = tweet;
-    [self updateUIWithTweet];
+    [self updateUI];
 }
 
-- (void)updateUIWithTweet
+- (void)updateUI
 {
     if (self.tweet) {
         Tweet *tweet = self.tweet;
@@ -67,9 +67,13 @@
         
         if (tweet.isRetweeted) {
             [self.retweetButton setImage:[UIImage imageNamed:@"retweet_on"] forState:UIControlStateNormal];
+        } else {
+            [self.retweetButton setImage:[UIImage imageNamed:@"retweet"] forState:UIControlStateNormal];
         }
         if (tweet.isFavorited) {
             [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_on"] forState:UIControlStateNormal];
+        } else {
+            [self.favoriteButton setImage:[UIImage imageNamed:@"favorite"] forState:UIControlStateNormal];
         }
         
         // Round the profile image corners
@@ -77,6 +81,16 @@
         layer.masksToBounds = YES;
         layer.cornerRadius = 10.0;
     }
+}
+
+- (IBAction)favoriteButtonTouch:(UIButton *)sender
+{
+    if (self.tweet.isFavorited) {
+        [self.tweet removeFromFavorites];
+    } else {
+        [self.tweet addToFavorites];
+    }
+    [self updateUI];
 }
 
 - (void)reply

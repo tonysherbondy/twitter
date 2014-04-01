@@ -13,6 +13,7 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 + (NSArray *)arrayFromJSON:(NSArray *)jsonArray;
 
+@property (nonatomic, strong) NSString *tweetId;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) User *author;
 @property (nonatomic, strong) NSDate *date;
@@ -22,4 +23,7 @@
 @property (nonatomic) NSInteger retweetCount;
 @property (nonatomic) BOOL isFavorited;
 @property (nonatomic) NSInteger favoriteCount;
+
+- (void)addToFavorites;
+- (void)removeFromFavorites;
 @end
