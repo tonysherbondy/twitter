@@ -92,6 +92,7 @@
         [self.tweet addToFavorites];
     }
     [self updateUI];
+    [self.refreshDelegate refreshUI];
 }
 
 - (IBAction)retweetButtonTouch:(id)sender {
@@ -101,6 +102,7 @@
         [self.tweet retweet];
     }
     [self updateUI];
+    [self.refreshDelegate refreshUI];
 }
 
 - (void)reply

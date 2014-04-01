@@ -48,6 +48,7 @@
 /* Begin PBXFileReference section */
 		7566A6CE44074817A611A13B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		AFC9A25BD02B448DA146D17A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB39972418EB889E0095A71A /* RefreshableProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshableProtocol.h; sourceTree = "<group>"; };
 		BB8700C018E8A957005A0623 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8700C318E8A957005A0623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BB8700C518E8A957005A0623 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,9 +113,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB39972518EB88A40095A71A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BB39972418EB889E0095A71A /* RefreshableProtocol.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		BB8700B718E8A957005A0623 = {
 			isa = PBXGroup;
 			children = (
+				BB39972518EB88A40095A71A /* Protocols */,
 				BBFCC16B18EA1C3400705618 /* Models */,
 				BBFCC16218EA02EB00705618 /* API */,
 				BBFCC17718EB3D2300705618 /* Views */,

@@ -125,6 +125,7 @@
     
     TweetViewController *tweetVC = [[TweetViewController alloc] init];
     tweetVC.tweet = self.tweets[indexPath.row];
+    tweetVC.refreshDelegate = self;
     [self.navigationController pushViewController:tweetVC animated:YES];
 }
 
