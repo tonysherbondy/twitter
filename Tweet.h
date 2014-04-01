@@ -13,6 +13,8 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 + (NSArray *)arrayFromJSON:(NSArray *)jsonArray;
 
++ (void)createTweetWithText:(NSString *)text;
+
 @property (nonatomic, strong) NSString *tweetId;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) User *author;

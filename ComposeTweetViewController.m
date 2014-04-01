@@ -9,6 +9,7 @@
 #import "ComposeTweetViewController.h"
 #import "User.h"
 #import <UIImageView+AFNetworking.h>
+#import "Tweet.h"
 
 @interface ComposeTweetViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
@@ -44,13 +45,13 @@
 
 - (void)cancel
 {
-    NSLog(@"cancel");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)tweet
 {
-    NSLog(@"tweet");
+    [Tweet createTweetWithText:self.tweetTextView.text];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
