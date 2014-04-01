@@ -17,6 +17,10 @@
     if (self) {
         self.text = dictionary[@"text"];
         self.author = [[User alloc] initWithDictionary:dictionary[@"user"]];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"EEE MMM dd HH:mm:ss Z yyyy"];
+        self.date = [formatter dateFromString:dictionary[@"created_at"]];
     }
     return self;
 }
@@ -28,6 +32,36 @@
         [array addObject:[[Tweet alloc] initWithDictionary:dictionary]];
     }
     return array;
+}
+
+@synthesize sinceDate = _sinceDate;
+- (NSString *)sinceDate
+{
+    if (!_sinceDate) {
+        NSTimeInterval elapsedTimeInterval = [self.date timeIntervalSinceNow];
+		int elapsedSeconds = (int)(elapsedTimeInterval * -1);
+        
+		if (elapsedSeconds < 60) {
+            _sinceDate = @"now";
+		}
+		else if (elapsedSeconds < 3600) {
+			int minutes = elapsedSeconds / 60;
+			_sinceDate = [NSString stringWithFormat:@"%dm", minutes];
+		}
+		else if (elapsedSeconds < 86400) {
+			int hours = elapsedSeconds / 3600;
+			_sinceDate = [NSString stringWithFormat:@"%dh", hours];
+		}
+		else if (elapsedSeconds < 31536000) {
+			int days = elapsedSeconds / 86400;
+			_sinceDate = [NSString stringWithFormat:@"%dd", days];
+		}
+		else {
+			int years = elapsedSeconds / 31536000;
+			_sinceDate = [NSString stringWithFormat:@"%dyr", years];
+		}
+    }
+    return _sinceDate;
 }
 
 @end

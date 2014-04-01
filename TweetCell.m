@@ -38,7 +38,8 @@
     // Update the UI when we set the tweet
     self.tweetTextLabel.text = tweet.text;
     self.authorNameLabel.text = tweet.author.name;
-    self.authorHandleLabel.text = tweet.author.handle;
+    self.authorHandleLabel.text = [NSString stringWithFormat:@"@%@", tweet.author.handle];
+    self.dateLabel.text = tweet.sinceDate;
     [self.authorImageView setImageWithURL:[NSURL URLWithString:tweet.author.imageURL]];
     
     // Round the profile image corners
