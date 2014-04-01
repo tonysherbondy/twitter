@@ -90,7 +90,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    Tweet *tweet = self.tweets[indexPath.row];
+    
+    // Need to consider the retweet header changing size
+    
+    // replace magic numbers with prototype cell
+    int textWidth = 220;
+    int heightOffset = 90;
+    
+    CGRect textRect = [tweet.text boundingRectWithSize:CGSizeMake(textWidth, CGFLOAT_MAX)
+                             options:NSStringDrawingUsesLineFragmentOrigin
+                          attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}
+                             context:nil];
+    return ceilf(textRect.size.height) + heightOffset;
 }
 
 @end

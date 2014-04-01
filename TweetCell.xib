@@ -42,9 +42,12 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have seen the future of news." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="392" translatesAutoresizingMaskIntoConstraints="NO" id="Dje-L4-kXO">
-                        <rect key="frame" x="78" y="43" width="392" height="15"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have seen the future of news." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="Dje-L4-kXO">
+                        <rect key="frame" x="78" y="43" width="220" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="220" id="MBh-O7-3TS"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -96,7 +99,6 @@
                     <constraint firstItem="CSc-92-21j" firstAttribute="leading" secondItem="ZJ6-m2-tR2" secondAttribute="trailing" constant="8" id="Vlu-6R-X5q"/>
                     <constraint firstItem="sRD-g2-XYK" firstAttribute="baseline" secondItem="W0j-JZ-PWm" secondAttribute="baseline" id="brg-Ps-p1n"/>
                     <constraint firstItem="sRD-g2-XYK" firstAttribute="leading" secondItem="W0j-JZ-PWm" secondAttribute="trailing" constant="7" id="dhX-Gh-PeL"/>
-                    <constraint firstAttribute="trailing" secondItem="Dje-L4-kXO" secondAttribute="trailing" constant="20" id="dza-Of-Snt"/>
                     <constraint firstItem="6tw-6c-VgP" firstAttribute="baseline" secondItem="sRD-g2-XYK" secondAttribute="baseline" id="kkD-N0-3VW"/>
                     <constraint firstItem="W0j-JZ-PWm" firstAttribute="leading" secondItem="lCQ-zl-T89" secondAttribute="trailing" constant="8" id="oY8-m1-QIw"/>
                     <constraint firstItem="lCQ-zl-T89" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="vIT-T5-oCb"/>
