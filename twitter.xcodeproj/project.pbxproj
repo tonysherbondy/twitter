@@ -31,6 +31,8 @@
 		BBFCC16A18EA037200705618 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFCC16818EA037200705618 /* LoginViewController.xib */; };
 		BBFCC16E18EA1C4300705618 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16D18EA1C4300705618 /* User.m */; };
 		BBFCC17118EA2DEB00705618 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC17018EA2DEB00705618 /* Tweet.m */; };
+		BBFCC17518EB3D1D00705618 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC17318EB3D1D00705618 /* TweetCell.m */; };
+		BBFCC17618EB3D1D00705618 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFCC17418EB3D1D00705618 /* TweetCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,9 @@
 		BBFCC16D18EA1C4300705618 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		BBFCC16F18EA2DEB00705618 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		BBFCC17018EA2DEB00705618 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		BBFCC17218EB3D1D00705618 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		BBFCC17318EB3D1D00705618 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		BBFCC17418EB3D1D00705618 /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +117,7 @@
 			children = (
 				BBFCC16B18EA1C3400705618 /* Models */,
 				BBFCC16218EA02EB00705618 /* API */,
+				BBFCC17718EB3D2300705618 /* Views */,
 				BB8700F718E8AA20005A0623 /* View Controllers */,
 				BB8700C918E8A957005A0623 /* twitter */,
 				BB8700E218E8A957005A0623 /* twitterTests */,
@@ -221,6 +227,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		BBFCC17718EB3D2300705618 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBFCC17218EB3D1D00705618 /* TweetCell.h */,
+				BBFCC17318EB3D1D00705618 /* TweetCell.m */,
+				BBFCC17418EB3D1D00705618 /* TweetCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,6 +317,7 @@
 				BB87010118E8ACE6005A0623 /* ComposeTweetViewController.xib in Resources */,
 				BB8700FC18E8ACCB005A0623 /* TweetViewController.xib in Resources */,
 				BBFCC16A18EA037200705618 /* LoginViewController.xib in Resources */,
+				BBFCC17618EB3D1D00705618 /* TweetCell.xib in Resources */,
 				BB8700F618E8AA1B005A0623 /* TweetsViewController.xib in Resources */,
 				BB8700CE18E8A957005A0623 /* InfoPlist.strings in Resources */,
 				BB8700D618E8A957005A0623 /* Images.xcassets in Resources */,
@@ -358,6 +375,7 @@
 				BBFCC17118EA2DEB00705618 /* Tweet.m in Sources */,
 				BBFCC16E18EA1C4300705618 /* User.m in Sources */,
 				BB8700FB18E8ACCB005A0623 /* TweetViewController.m in Sources */,
+				BBFCC17518EB3D1D00705618 /* TweetCell.m in Sources */,
 				BB8700D418E8A957005A0623 /* AppDelegate.m in Sources */,
 				BB8700D018E8A957005A0623 /* main.m in Sources */,
 				BB87010018E8ACE6005A0623 /* ComposeTweetViewController.m in Sources */,

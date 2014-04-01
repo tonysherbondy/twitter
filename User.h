@@ -14,6 +14,9 @@
 + (void)signout;
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSString *handle;
+
 - (NSDictionary *)dictionary;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 @end
