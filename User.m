@@ -32,6 +32,8 @@ static User *currentUser = nil;
     } else {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"current_user"];
     }
+    // Force NSUserDefaults to sync
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (void)signout
