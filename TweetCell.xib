@@ -110,6 +110,7 @@
                 <outlet property="authorImageView" destination="lCQ-zl-T89" id="uqb-7H-YJh"/>
                 <outlet property="authorNameLabel" destination="W0j-JZ-PWm" id="s2N-Sq-o6j"/>
                 <outlet property="dateLabel" destination="6tw-6c-VgP" id="l6d-ho-Orj"/>
+                <outlet property="favoriteButton" destination="KII-Ll-A9l" id="gsp-2l-azk"/>
                 <outlet property="replyButton" destination="ZJ6-m2-tR2" id="ouR-d4-Hcc"/>
                 <outlet property="retweetButton" destination="CSc-92-21j" id="hxp-mR-ThR"/>
                 <outlet property="tweetTextLabel" destination="Dje-L4-kXO" id="0c7-Ly-ln9"/>

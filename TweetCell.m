@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UILabel *tweetTextLabel;
 @end
 
@@ -41,6 +42,13 @@
     self.authorHandleLabel.text = [NSString stringWithFormat:@"@%@", tweet.author.handle];
     self.dateLabel.text = tweet.sinceDate;
     [self.authorImageView setImageWithURL:[NSURL URLWithString:tweet.author.imageURL]];
+    
+    if (tweet.isRetweeted) {
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet_on"] forState:UIControlStateNormal];
+    }
+    if (tweet.isFavorited) {
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_on"] forState:UIControlStateNormal];
+    }
     
     // Round the profile image corners
     CALayer *layer = [self.authorImageView layer];
