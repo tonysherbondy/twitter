@@ -46,6 +46,9 @@ static User *currentUser = nil;
     self = [super init];
     if (self) {
         self.name = dictionary[@"name"];
+        self.userID = [dictionary[@"id"] integerValue];
+        self.imageURL = dictionary[@"profile_image_url"];
+        self.handle = dictionary[@"screen_name"];
     }
     return self;
 }

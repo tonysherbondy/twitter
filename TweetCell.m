@@ -7,6 +7,7 @@
 //
 
 #import "TweetCell.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface TweetCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *authorImageView;
@@ -37,6 +38,14 @@
     // Update the UI when we set the tweet
     self.tweetTextLabel.text = tweet.text;
     self.authorNameLabel.text = tweet.author.name;
+    self.authorHandleLabel.text = tweet.author.handle;
+    [self.authorImageView setImageWithURL:[NSURL URLWithString:tweet.author.imageURL]];
+    
+    // Round the profile image corners
+    CALayer *layer = [self.authorImageView layer];
+    layer.masksToBounds = YES;
+    layer.cornerRadius = 10.0;
+    
     _tweet = tweet;
 }
 
