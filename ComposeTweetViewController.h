@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RefreshableProtocol.h"
 
 @interface ComposeTweetViewController : UIViewController
-
+@property (nonatomic, strong) NSMutableArray *tweets;
+@property (nonatomic, weak) id<RefreshableProtocol> refreshDelegate;
 @end

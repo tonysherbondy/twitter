@@ -17,7 +17,7 @@
 
 @interface TweetsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *tweets;
+@property (nonatomic, strong) NSMutableArray *tweets;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
@@ -60,7 +60,7 @@
     [[TwitterClient instance] timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.tweets = [Tweet arrayFromJSON:responseObject];
+        self.tweets = [[Tweet arrayFromJSON:responseObject] mutableCopy];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
         
@@ -80,6 +80,8 @@
 - (void)newTweet
 {
     ComposeTweetViewController *cvc = [[ComposeTweetViewController alloc] init];
+    cvc.tweets = self.tweets;
+    cvc.refreshDelegate = self;
     [self.navigationController pushViewController:cvc animated:YES];
 }
 

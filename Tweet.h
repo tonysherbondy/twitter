@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import <AFNetworking/AFHTTPRequestOperation.h>
 
 @interface Tweet : NSObject
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 + (NSArray *)arrayFromJSON:(NSArray *)jsonArray;
 
-+ (void)createTweetWithText:(NSString *)text;
++ (void)createTweetWithText:(NSString *)text success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @property (nonatomic, strong) NSString *tweetId;
 @property (nonatomic, strong) NSString *text;

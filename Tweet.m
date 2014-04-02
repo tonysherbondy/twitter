@@ -44,17 +44,12 @@
     return array;
 }
 
-+ (void)createTweetWithText:(NSString *)text
++ (void)createTweetWithText:(NSString *)text success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
     [[TwitterClient instance] POST:@"1.1/statuses/update.json"
                         parameters:@{@"status":text}
-                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                               // add new tweet
-                               NSLog(@"added new tweet: %@", responseObject);
-                           }
-                           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                               NSLog(@"error creating new tweet");
-                           }];
+                           success:success
+                           failure:failure];
 }
 
 @synthesize sinceDate = _sinceDate;

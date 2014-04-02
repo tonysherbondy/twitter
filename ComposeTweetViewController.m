@@ -50,8 +50,14 @@
 
 - (void)tweet
 {
-    [Tweet createTweetWithText:self.tweetTextView.text];
-    [self.navigationController popViewControllerAnimated:YES];
+    [Tweet createTweetWithText:self.tweetTextView.text success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+        [self.tweets insertObject:tweet atIndex:0];
+        [self.refreshDelegate refreshUI];
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error creating new tweet");
+    }];
 }
 
 @end
