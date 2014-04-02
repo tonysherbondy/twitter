@@ -107,7 +107,7 @@
 
 - (void)reply
 {
-    NSLog(@"reply");
+    NSLog(@"reply screen");
 }
 
 @end

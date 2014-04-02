@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userHandleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
+@property (nonatomic, strong) UIBarButtonItem *numberCharsBarItem;
+@property (nonatomic, strong) UIBarButtonItem *tweetButton;
 @end
 
 @implementation ComposeTweetViewController
@@ -34,13 +36,46 @@
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(tweet)];
+    
+    
+    self.numberCharsBarItem = [[UIBarButtonItem alloc] initWithTitle:@"140" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.numberCharsBarItem.tintColor = [UIColor grayColor];
+    
+    self.tweetButton = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(tweet)];
+    self.tweetButton.enabled = NO;
+    self.navigationItem.rightBarButtonItems = @[self.tweetButton, self.numberCharsBarItem];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange) name:UITextViewTextDidChangeNotification object:nil];
     
     // Update view
     User *currentUser = [User currentUser];
     self.userNameLabel.text = currentUser.name;
     self.userHandleLabel.text = [NSString stringWithFormat:@"@%@",currentUser.handle];
     [self.userImageView setImageWithURL:[NSURL URLWithString:currentUser.imageURL]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super viewWillDisappear:animated];
+}
+     
+- (void)textViewDidChange
+{
+    NSString *text = self.tweetTextView.text;
+    NSInteger numberChars = 140 - text.length;
+    UIColor *tintColor = nil;
+    if (numberChars < 0) {
+        tintColor = [UIColor redColor];
+        self.tweetButton.enabled = NO;
+    } else {
+        tintColor = [UIColor grayColor];
+        if (text.length > 0) {
+            self.tweetButton.enabled = YES;
+        }
+    }
+    self.numberCharsBarItem.tintColor = tintColor;
+    self.numberCharsBarItem.title =[NSString stringWithFormat:@"%d", numberChars];
 }
 
 - (void)cancel
