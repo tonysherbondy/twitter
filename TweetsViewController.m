@@ -73,14 +73,12 @@
 
 - (void)signout
 {
-    NSLog(@"sign out");
     [User signout];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)newTweet
 {
-    NSLog(@"new tweet");
     ComposeTweetViewController *cvc = [[ComposeTweetViewController alloc] init];
     [self.navigationController pushViewController:cvc animated:YES];
 }
