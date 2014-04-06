@@ -80,6 +80,17 @@ static const CGFloat sizeOpenMenu = 100;
     CGRect contentFrame = self.contentView.frame;
     self.contentView.frame = CGRectMake(sizeOpenMenu, 0, contentFrame.size.width, contentFrame.size.height);
 }
+- (IBAction)onTimelineButtonClick:(id)sender
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        [self closeMenu];
+    } completion:^(BOOL finished) {
+        if (![self.navController.topViewController isKindOfClass:[TweetsViewController class]]) {
+            [self.navController popToRootViewControllerAnimated:YES];
+        };
+    }];
+}
+
 - (IBAction)onProfileButtonClick:(UIButton *)sender
 {
     [UIView animateWithDuration:0.2 animations:^{
@@ -91,8 +102,6 @@ static const CGFloat sizeOpenMenu = 100;
             [self.navController pushViewController:pvc animated:YES];
         };
     }];
-    
-    
 }
 
 - (IBAction)onLogoutButtonClick:(UIButton *)sender

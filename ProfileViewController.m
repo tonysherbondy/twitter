@@ -11,6 +11,7 @@
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *numTweetsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numFollowingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numFollowersLabel;
@@ -68,6 +69,7 @@
 - (void)refreshUI
 {
     [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.backgroundImageURL]];
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:self.profileImageURL]];
     self.numTweetsLabel.text = [NSString stringWithFormat:@"%d", self.numTweets];
     self.numFollowingLabel.text = [NSString stringWithFormat:@"%d", self.numFollowing];
     self.numFollowersLabel.text = [NSString stringWithFormat:@"%d", self.numFollowers];
