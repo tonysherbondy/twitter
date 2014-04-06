@@ -54,6 +54,7 @@
         [panGestureRecognizer setTranslation:CGPointMake(0, 0) inView:self.view];
         CGFloat x = contentFrame.origin.x + point.x;
         x = x > sizeOpenMenu ? sizeOpenMenu : x;
+        x = x < 0 ? 0 : x;
         self.contentView.frame = CGRectMake(x, contentFrame.origin.y, contentFrame.size.width, contentFrame.size.height);
         
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
