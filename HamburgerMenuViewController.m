@@ -41,9 +41,9 @@
     [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)]];
 }
 
+static const CGFloat sizeOpenMenu = 100;
 - (void)onPan:(UIPanGestureRecognizer *)panGestureRecognizer
 {
-    CGFloat sizeOpenMenu = 100;
     CGRect contentFrame = self.contentView.frame;
     
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
@@ -60,18 +60,33 @@
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:0.5 animations:^{
             if ([panGestureRecognizer velocityInView:self.view].x < 0) {
-                self.contentView.frame = CGRectMake(0, 0, contentFrame.size.width, contentFrame.size.height);
+                [self closeMenu];
             } else {
-                self.contentView.frame = CGRectMake(sizeOpenMenu, 0, contentFrame.size.width, contentFrame.size.height);
+                [self openMenu];
             }
         }];
     }
 }
 
+- (void)closeMenu
+{
+    CGRect contentFrame = self.contentView.frame;
+    self.contentView.frame = CGRectMake(0, 0, contentFrame.size.width, contentFrame.size.height);
+}
+
+- (void)openMenu
+{
+    CGRect contentFrame = self.contentView.frame;
+    self.contentView.frame = CGRectMake(sizeOpenMenu, 0, contentFrame.size.width, contentFrame.size.height);
+}
+
 - (IBAction)onLogoutButtonClick:(UIButton *)sender
 {
-    CGRect frame = self.view.frame;
-    self.contentView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    [UIView animateWithDuration:0.2 animations:^{
+        [self closeMenu];
+    } completion:^(BOOL finished) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"signout" object:nil];
+    }];
 }
 
 @end

@@ -71,11 +71,6 @@
     }];
 }
 
-- (void)signout
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"signout" object:nil];
-}
-
 - (void)newTweet
 {
     ComposeTweetViewController *cvc = [[ComposeTweetViewController alloc] init];
