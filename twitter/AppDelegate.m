@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TweetsViewController.h"
+#import "HamburgerMenuViewController.h"
 #import "LoginViewController.h"
 #import "TwitterClient.h"
 #import "User.h"
@@ -40,8 +40,8 @@
 
 - (void)loggedInView
 {
-    TweetsViewController *tvc = [[TweetsViewController alloc] init];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:tvc];
+    self.window.rootViewController = [[HamburgerMenuViewController alloc] init];
+//     = [[UINavigationController alloc] initWithRootViewController:tvc];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation

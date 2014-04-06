@@ -45,13 +45,16 @@
                                 <color key="titleColor" red="0.0" green="0.72165830289999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="onLogoutButtonClick:" destination="-1" eventType="touchUpInside" id="8uG-oV-qdD"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgm-vL-CaF">
-                            <rect key="frame" x="100" y="0.0" width="220" height="568"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="220" id="po0-E6-Ala"/>
+                                <constraint firstAttribute="width" constant="320" id="po0-E6-Ala"/>
                             </constraints>
                         </view>
                     </subviews>

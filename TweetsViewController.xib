@@ -22,8 +22,12 @@
                 </tableView>
             </subviews>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="cBP-IW-c8E" secondAttribute="trailing" id="2kW-qC-2ed"/>
+                <constraint firstAttribute="bottom" secondItem="cBP-IW-c8E" secondAttribute="bottom" id="36k-dQ-5Bu"/>
                 <constraint firstAttribute="bottom" secondItem="cBP-IW-c8E" secondAttribute="bottom" id="5sE-5X-nQE"/>
                 <constraint firstItem="cBP-IW-c8E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TMC-CT-x0m"/>
+                <constraint firstItem="cBP-IW-c8E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bSa-5Q-uBh"/>
+                <constraint firstItem="cBP-IW-c8E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eUb-Hf-fXE"/>
                 <constraint firstItem="cBP-IW-c8E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="evp-Xl-Go4"/>
                 <constraint firstAttribute="trailing" secondItem="cBP-IW-c8E" secondAttribute="trailing" id="hTW-q3-VwK"/>
             </constraints>
