@@ -17,8 +17,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signout) name:@"signout" object:nil];
+    
+    self.window.rootViewController = [[LoginViewController alloc] init];
     
     User *currentUser = [User currentUser];
     if (currentUser) {
@@ -30,10 +32,16 @@
     return YES;
 }
 
+- (void)signout
+{
+    [User signout];
+    self.window.rootViewController = [[LoginViewController alloc] init];
+}
+
 - (void)loggedInView
 {
     TweetsViewController *tvc = [[TweetsViewController alloc] init];
-    [((UINavigationController *)self.window.rootViewController) pushViewController:tvc animated:YES];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:tvc];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation

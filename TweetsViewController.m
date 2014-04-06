@@ -73,8 +73,7 @@
 
 - (void)signout
 {
-    [User signout];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"signout" object:nil];
 }
 
 - (void)newTweet
