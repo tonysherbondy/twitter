@@ -63,4 +63,12 @@ static User *currentUser = nil;
              @"screen_name":self.handle};
 }
 
+- (void)profileDataWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    [[TwitterClient instance] GET:@"1.1/users/show.json"
+                       parameters:@{@"screen_name":self.handle}
+                          success:success
+                          failure:failure];
+}
+
 @end

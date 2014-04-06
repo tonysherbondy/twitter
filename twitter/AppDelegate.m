@@ -12,6 +12,8 @@
 #import "TwitterClient.h"
 #import "User.h"
 
+#import "ProfileViewController.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -40,8 +42,10 @@
 
 - (void)loggedInView
 {
-    self.window.rootViewController = [[HamburgerMenuViewController alloc] init];
-//     = [[UINavigationController alloc] initWithRootViewController:tvc];
+//    self.window.rootViewController = [[HamburgerMenuViewController alloc] init];
+    ProfileViewController *pvc = [[ProfileViewController alloc] init];
+    pvc.user = [User currentUser];
+    self.window.rootViewController = pvc;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
