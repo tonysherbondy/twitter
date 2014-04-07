@@ -8,6 +8,7 @@
 
 #import "TweetCell.h"
 #import <UIImageView+AFNetworking.h>
+#import "ProfileViewController.h"
 
 @interface TweetCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *authorImageView;
@@ -34,6 +35,12 @@
     // Configure the view for the selected state
 }
 
+- (void)profileImageClick:(UITapGestureRecognizer *)tapGesture
+{
+    NSLog(@"profile image click of name: %@", self.tweet.author.handle);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"show_profile" object:self.tweet.author];
+}
+
 - (void)setTweet:(Tweet *)tweet
 {
     // Update the UI when we set the tweet
@@ -42,6 +49,9 @@
     self.authorHandleLabel.text = [NSString stringWithFormat:@"@%@", tweet.author.handle];
     self.dateLabel.text = tweet.sinceDate;
     [self.authorImageView setImageWithURL:[NSURL URLWithString:tweet.author.imageURL]];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileImageClick:)];
+    [self.authorImageView addGestureRecognizer:tap];
     
     if (tweet.isRetweeted) {
         [self.retweetButton setImage:[UIImage imageNamed:@"retweet_on"] forState:UIControlStateNormal];

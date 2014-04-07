@@ -27,6 +27,8 @@
     if (self) {
         self.tweetsController = [[TweetsViewController alloc] init];
         self.navController = [[UINavigationController alloc] initWithRootViewController:self.tweetsController];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showProfileNotification:) name:@"show_profile" object:nil];
     }
     return self;
 }
@@ -97,11 +99,21 @@ static const CGFloat sizeOpenMenu = 100;
         [self closeMenu];
     } completion:^(BOOL finished) {
         if (![self.navController.topViewController isKindOfClass:[ProfileViewController class]]) {
-            ProfileViewController *pvc = [[ProfileViewController alloc] init];
-            pvc.user = [User currentUser];
-            [self.navController pushViewController:pvc animated:YES];
+            [self showProfile:[User currentUser]];
         };
     }];
+}
+
+- (void)showProfileNotification:(NSNotification *)notification
+{
+    [self showProfile:(User *)notification.object];
+}
+
+- (void)showProfile:(User *)user
+{
+    ProfileViewController *pvc = [[ProfileViewController alloc] init];
+    pvc.user = user;
+    [self.navController pushViewController:pvc animated:YES];
 }
 
 - (IBAction)onLogoutButtonClick:(UIButton *)sender
