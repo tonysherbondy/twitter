@@ -63,6 +63,9 @@
         self.dateLabel.text = tweet.fullDisplayDate;
         [self.authorImageView setImageWithURL:[NSURL URLWithString:tweet.author.imageURL]];
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileImageClick:)];
+        [self.authorImageView addGestureRecognizer:tap];
+        
         self.numberRetweetsLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
         self.numberFavoritesLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
         
@@ -82,6 +85,11 @@
         layer.masksToBounds = YES;
         layer.cornerRadius = 10.0;
     }
+}
+
+- (void)profileImageClick:(UITapGestureRecognizer *)tapGesture
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"show_profile" object:self.tweet.author];
 }
 
 - (IBAction)favoriteButtonTouch:(UIButton *)sender

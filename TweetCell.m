@@ -37,7 +37,6 @@
 
 - (void)profileImageClick:(UITapGestureRecognizer *)tapGesture
 {
-    NSLog(@"profile image click of name: %@", self.tweet.author.handle);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"show_profile" object:self.tweet.author];
 }
 
