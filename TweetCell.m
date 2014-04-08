@@ -8,7 +8,6 @@
 
 #import "TweetCell.h"
 #import <UIImageView+AFNetworking.h>
-#import "ProfileViewController.h"
 
 @interface TweetCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *authorImageView;
