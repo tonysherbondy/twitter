@@ -10,5 +10,6 @@
 #import "RefreshableProtocol.h"
 
 @interface BaseTweetsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RefreshableProtocol>
-
+@property (nonatomic, strong) NSMutableArray *tweets;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end

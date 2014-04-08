@@ -8,11 +8,12 @@
 
 #import "TweetsViewController.h"
 #import "ComposeTweetViewController.h"
+#import "TwitterClient.h"
+#import "Tweet.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface TweetsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *tweets;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation TweetsViewController
@@ -29,6 +30,24 @@
     cvc.tweets = self.tweets;
     cvc.refreshDelegate = self;
     [self.navigationController pushViewController:cvc animated:YES];
+}
+
+- (void)loadTimeline
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading...";
+    [[TwitterClient instance] timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        self.tweets = [[Tweet arrayFromJSON:responseObject] mutableCopy];
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"load timeline error: %@", error);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.refreshControl endRefreshing];
+    }];
 }
 
 @end

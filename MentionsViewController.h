@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RefreshableProtocol.h"
+#import "BaseTweetsViewController.h"
 
-@interface MentionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RefreshableProtocol>
+@interface MentionsViewController : BaseTweetsViewController
 
 @end

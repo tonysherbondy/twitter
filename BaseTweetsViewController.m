@@ -8,16 +8,11 @@
 
 #import "BaseTweetsViewController.h"
 #import "User.h"
-#import "TwitterClient.h"
-#import "Tweet.h"
-#import <MBProgressHUD/MBProgressHUD.h>
 #import "TweetCell.h"
 #import "TweetViewController.h"
 
 @interface BaseTweetsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *tweets;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation BaseTweetsViewController
@@ -29,6 +24,11 @@
         [self loadTimeline];
     }
     return self;
+}
+
+- (void)loadTimeline
+{
+    NSLog(@"Need to implement loadTimeline!");
 }
 
 - (void)viewDidLoad
@@ -59,24 +59,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadTimeline) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
-}
-
-- (void)loadTimeline
-{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading...";
-    [[TwitterClient instance] timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.tweets = [[Tweet arrayFromJSON:responseObject] mutableCopy];
-        [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"load timeline error: %@", error);
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self.refreshControl endRefreshing];
-    }];
 }
 
 - (void)refreshUI
