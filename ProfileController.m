@@ -1,27 +1,26 @@
 //
-//  TweetsViewController.m
+//  ProfileController.m
 //  twitter
 //
-//  Created by Anthony Sherbondy on 3/30/14.
+//  Created by Anthony Sherbondy on 4/8/14.
 //  Copyright (c) 2014 Anthony Sherbondy. All rights reserved.
 //
 
-#import "TweetsViewController.h"
-#import "ComposeTweetViewController.h"
-#import "User.h"
+#import "ProfileController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "TwitterClient.h"
 #import "Tweet.h"
-#import <MBProgressHUD/MBProgressHUD.h>
 #import "TweetCell.h"
 #import "TweetViewController.h"
 
-@interface TweetsViewController ()
+@interface ProfileController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+// these will be mentions
 @property (nonatomic, strong) NSMutableArray *tweets;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
-@implementation TweetsViewController
+@implementation ProfileController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,27 +36,29 @@
     [super viewDidLoad];
     
     // Navbar
-    self.navigationItem.title = @"Home";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(newTweet)];
+    self.navigationItem.title = @"Profile";
     
     // Table
+    // refactor this
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
     [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
     
     // Refresh
+    // refactor this
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadTimeline) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
 }
 
+// this should be the overridden method and it should say loadTweets or something
 - (void)loadTimeline
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading...";
     [[TwitterClient instance] timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.tweets = [[Tweet arrayFromJSON:responseObject] mutableCopy];
         [self.tableView reloadData];
@@ -68,14 +69,6 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.refreshControl endRefreshing];
     }];
-}
-
-- (void)newTweet
-{
-    ComposeTweetViewController *cvc = [[ComposeTweetViewController alloc] init];
-    cvc.tweets = self.tweets;
-    cvc.refreshDelegate = self;
-    [self.navigationController pushViewController:cvc animated:YES];
 }
 
 - (void)refreshUI
@@ -106,9 +99,9 @@
     int heightOffset = 90;
     
     CGRect textRect = [tweet.text boundingRectWithSize:CGSizeMake(textWidth, CGFLOAT_MAX)
-                             options:NSStringDrawingUsesLineFragmentOrigin
-                          attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}
-                             context:nil];
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                            attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}
+                                               context:nil];
     return ceilf(textRect.size.height) + heightOffset;
 }
 

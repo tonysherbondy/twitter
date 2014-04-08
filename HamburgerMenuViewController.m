@@ -8,7 +8,7 @@
 
 #import "HamburgerMenuViewController.h"
 #import "TweetsViewController.h"
-#import "ProfileViewController.h"
+#import "ProfileController.h"
 
 @interface HamburgerMenuViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -98,7 +98,7 @@ static const CGFloat sizeOpenMenu = 100;
     [UIView animateWithDuration:0.2 animations:^{
         [self closeMenu];
     } completion:^(BOOL finished) {
-        if (![self.navController.topViewController isKindOfClass:[ProfileViewController class]]) {
+        if (![self.navController.topViewController isKindOfClass:[ProfileController class]]) {
             [self showProfile:[User currentUser]];
         };
     }];
@@ -111,7 +111,7 @@ static const CGFloat sizeOpenMenu = 100;
 
 - (void)showProfile:(User *)user
 {
-    ProfileViewController *pvc = [[ProfileViewController alloc] init];
+    ProfileController *pvc = [[ProfileController alloc] init];
     pvc.user = user;
     [self.navController pushViewController:pvc animated:YES];
 }
