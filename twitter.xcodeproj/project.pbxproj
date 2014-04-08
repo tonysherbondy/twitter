@@ -34,6 +34,7 @@
 		BB988FC218F1DBB500614513 /* HamburgerMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB988FC018F1DBB500614513 /* HamburgerMenuViewController.xib */; };
 		BB988FC618F1EE0300614513 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB988FC418F1EE0300614513 /* ProfileViewController.m */; };
 		BB988FC718F1EE0300614513 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB988FC518F1EE0300614513 /* ProfileViewController.xib */; };
+		BBD48A2118F4891A002D487A /* BaseTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD48A2018F4891A002D487A /* BaseTweetsViewController.m */; };
 		BBFCC16518EA02FE00705618 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16418EA02FE00705618 /* TwitterClient.m */; };
 		BBFCC16918EA037200705618 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16718EA037200705618 /* LoginViewController.m */; };
 		BBFCC16A18EA037200705618 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFCC16818EA037200705618 /* LoginViewController.xib */; };
@@ -94,6 +95,8 @@
 		BB988FC318F1EE0300614513 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		BB988FC418F1EE0300614513 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		BB988FC518F1EE0300614513 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		BBD48A1F18F4891A002D487A /* BaseTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTweetsViewController.h; sourceTree = "<group>"; };
+		BBD48A2018F4891A002D487A /* BaseTweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTweetsViewController.m; sourceTree = "<group>"; };
 		BBFCC16318EA02FE00705618 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
 		BBFCC16418EA02FE00705618 /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterClient.m; sourceTree = "<group>"; };
 		BBFCC16618EA037200705618 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 		BB8700F718E8AA20005A0623 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BBD48A1F18F4891A002D487A /* BaseTweetsViewController.h */,
+				BBD48A2018F4891A002D487A /* BaseTweetsViewController.m */,
 				BB8700F218E8AA1B005A0623 /* TweetsViewController.h */,
 				BB8700F318E8AA1B005A0623 /* TweetsViewController.m */,
 				BB8700F418E8AA1B005A0623 /* TweetsViewController.xib */,
@@ -420,6 +425,7 @@
 			files = (
 				BBFCC17118EA2DEB00705618 /* Tweet.m in Sources */,
 				BBFCC16E18EA1C4300705618 /* User.m in Sources */,
+				BBD48A2118F4891A002D487A /* BaseTweetsViewController.m in Sources */,
 				BB8700FB18E8ACCB005A0623 /* TweetViewController.m in Sources */,
 				BB2A8EFE18F48507008778E7 /* MentionsViewController.m in Sources */,
 				BBFCC17518EB3D1D00705618 /* TweetCell.m in Sources */,
