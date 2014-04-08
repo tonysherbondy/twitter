@@ -32,8 +32,6 @@
 		BB87010118E8ACE6005A0623 /* ComposeTweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8700FF18E8ACE6005A0623 /* ComposeTweetViewController.xib */; };
 		BB988FC118F1DBB500614513 /* HamburgerMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB988FBF18F1DBB500614513 /* HamburgerMenuViewController.m */; };
 		BB988FC218F1DBB500614513 /* HamburgerMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB988FC018F1DBB500614513 /* HamburgerMenuViewController.xib */; };
-		BB988FC618F1EE0300614513 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB988FC418F1EE0300614513 /* ProfileViewController.m */; };
-		BB988FC718F1EE0300614513 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB988FC518F1EE0300614513 /* ProfileViewController.xib */; };
 		BBD48A2118F4891A002D487A /* BaseTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD48A2018F4891A002D487A /* BaseTweetsViewController.m */; };
 		BBFCC16518EA02FE00705618 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16418EA02FE00705618 /* TwitterClient.m */; };
 		BBFCC16918EA037200705618 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFCC16718EA037200705618 /* LoginViewController.m */; };
@@ -92,9 +90,6 @@
 		BB988FBE18F1DBB500614513 /* HamburgerMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HamburgerMenuViewController.h; sourceTree = "<group>"; };
 		BB988FBF18F1DBB500614513 /* HamburgerMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HamburgerMenuViewController.m; sourceTree = "<group>"; };
 		BB988FC018F1DBB500614513 /* HamburgerMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HamburgerMenuViewController.xib; sourceTree = "<group>"; };
-		BB988FC318F1EE0300614513 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		BB988FC418F1EE0300614513 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		BB988FC518F1EE0300614513 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		BBD48A1F18F4891A002D487A /* BaseTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTweetsViewController.h; sourceTree = "<group>"; };
 		BBD48A2018F4891A002D487A /* BaseTweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTweetsViewController.m; sourceTree = "<group>"; };
 		BBFCC16318EA02FE00705618 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
@@ -241,9 +236,6 @@
 				BB988FBE18F1DBB500614513 /* HamburgerMenuViewController.h */,
 				BB988FBF18F1DBB500614513 /* HamburgerMenuViewController.m */,
 				BB988FC018F1DBB500614513 /* HamburgerMenuViewController.xib */,
-				BB988FC318F1EE0300614513 /* ProfileViewController.h */,
-				BB988FC418F1EE0300614513 /* ProfileViewController.m */,
-				BB988FC518F1EE0300614513 /* ProfileViewController.xib */,
 				BB2A8EF618F46E49008778E7 /* ProfileController.h */,
 				BB2A8EF718F46E49008778E7 /* ProfileController.m */,
 				BB2A8EF818F46E49008778E7 /* ProfileController.xib */,
@@ -361,7 +353,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB988FC718F1EE0300614513 /* ProfileViewController.xib in Resources */,
 				BB87010118E8ACE6005A0623 /* ComposeTweetViewController.xib in Resources */,
 				BB988FC218F1DBB500614513 /* HamburgerMenuViewController.xib in Resources */,
 				BB8700FC18E8ACCB005A0623 /* TweetViewController.xib in Resources */,
@@ -436,7 +427,6 @@
 				BB87010018E8ACE6005A0623 /* ComposeTweetViewController.m in Sources */,
 				BBFCC16918EA037200705618 /* LoginViewController.m in Sources */,
 				BBFCC16518EA02FE00705618 /* TwitterClient.m in Sources */,
-				BB988FC618F1EE0300614513 /* ProfileViewController.m in Sources */,
 				BB8700F518E8AA1B005A0623 /* TweetsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

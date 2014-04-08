@@ -16,35 +16,20 @@
 
 @interface ProfileController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *numTweetsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numFollowingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numFollowersLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 @property (nonatomic, strong) NSString *backgroundImageURL;
+@property (nonatomic, strong) NSString *profileImageURL;
+@property (nonatomic) NSInteger numTweets;
+@property (nonatomic) NSInteger numFollowers;
+@property (nonatomic) NSInteger numFollowing;
 @end
 
 @implementation ProfileController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Navbar
-    self.navigationItem.title = @"Profile";
-    
-    // Table
-    // refactor this
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
-    [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
-    
-    // Refresh
-    // refactor this
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(loadTimeline) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
-    
-    [self loadUserProfile];
-}
 
 - (void)setupNavbar
 {
@@ -67,6 +52,10 @@
     if (self.user) {
         [self.user profileDataWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             self.backgroundImageURL = responseObject[@"profile_background_image_url"];
+            self.profileImageURL = responseObject[@"profile_image_url"];
+            self.numFollowers = [responseObject[@"followers_count"] integerValue];
+            self.numFollowing = [responseObject[@"friends_count"] integerValue];
+            self.numTweets = [responseObject[@"statuses_count"] integerValue];
             [self refreshUI];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -105,7 +94,12 @@
 - (void)refreshUI
 {
     [self.tableView reloadData];
+    
     [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.backgroundImageURL]];
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:self.profileImageURL]];
+    self.numTweetsLabel.text = [NSString stringWithFormat:@"%d", self.numTweets];
+    self.numFollowingLabel.text = [NSString stringWithFormat:@"%d", self.numFollowing];
+    self.numFollowersLabel.text = [NSString stringWithFormat:@"%d", self.numFollowers];
 }
 
 @end
