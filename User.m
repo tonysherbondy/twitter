@@ -71,4 +71,12 @@ static User *currentUser = nil;
                           failure:failure];
 }
 
+- (void)timelineWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    [[TwitterClient instance] GET:@"1.1/statuses/user_timeline.json"
+                       parameters:@{@"screen_name":self.handle}
+                          success:success
+                          failure:failure];
+}
+
 @end

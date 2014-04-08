@@ -12,8 +12,8 @@
 #import "User.h"
 
 #define TWITTER_BASEURL [NSURL URLWithString:@"https://api.twitter.com/"]
-#define TWITTER_CONSUMER_KEY @"JPe0NlgfmAIACmRlWIptv0eKl"
-#define TWITTER_CONSUMER_SECRET @"dyz93SHCN9a4vjYmRIjeFwxy8OeyfkKVD8XIPmghQQiVbwGPwM"
+#define TWITTER_CONSUMER_KEY @"lCFBhLO0xQm0W0bJYpiMKzlYO"
+#define TWITTER_CONSUMER_SECRET @"XXPjsKltBS65LeiO4UHumGnY5t94uUxtksDkvsyfSDV3fG2BAu"
 
 @implementation TwitterClient
 
@@ -96,6 +96,14 @@
 {
     [self GET:@"1.1/statuses/home_timeline.json"
    parameters:@{@"include_my_retweet": @(YES)}
+      success:success
+      failure:failure];
+}
+
+- (void)mentionsTimelineWithSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
+{
+    [self GET:@"1.1/statuses/mentions_timeline.json"
+   parameters:nil
       success:success
       failure:failure];
 }

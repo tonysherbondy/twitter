@@ -14,5 +14,6 @@
 
 - (BOOL)authorizationCallbackURL:(NSURL *)url onSuccess:(void (^)(void))completion;
 - (void)timelineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)mentionsTimelineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 - (void)currentUser:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure;
 @end

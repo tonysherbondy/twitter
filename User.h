@@ -21,6 +21,8 @@
 
 - (void)profileDataWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+- (void)timelineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 - (NSDictionary *)dictionary;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 @end

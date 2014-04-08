@@ -64,7 +64,7 @@
         [self.refreshControl endRefreshing];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"load timeline error");
+        NSLog(@"load timeline error: %@", error);
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.refreshControl endRefreshing];
     }];

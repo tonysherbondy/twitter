@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileController">
             <connections>
+                <outlet property="backgroundImageView" destination="Lfl-Te-eMd" id="YMx-AV-K6i"/>
                 <outlet property="tableView" destination="VSL-i2-Kd8" id="7JN-l8-Y3E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -16,17 +17,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VSL-i2-Kd8">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="251" width="320" height="317"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lfl-Te-eMd">
+                    <rect key="frame" x="0.0" y="60" width="320" height="142"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="142" id="ToN-Vp-UKG"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="VSL-i2-Kd8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KGC-YU-kDk"/>
-                <constraint firstAttribute="bottom" secondItem="VSL-i2-Kd8" secondAttribute="bottom" id="dE8-8n-LtG"/>
-                <constraint firstAttribute="trailing" secondItem="VSL-i2-Kd8" secondAttribute="trailing" id="dQL-h2-2IG"/>
-                <constraint firstItem="VSL-i2-Kd8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="etX-kT-aEc"/>
+                <constraint firstAttribute="trailing" secondItem="Lfl-Te-eMd" secondAttribute="trailing" id="6ON-tQ-Zoh"/>
+                <constraint firstAttribute="bottom" secondItem="VSL-i2-Kd8" secondAttribute="bottom" id="7QR-ug-LjY"/>
+                <constraint firstItem="VSL-i2-Kd8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="T0b-rr-xx4"/>
+                <constraint firstAttribute="trailing" secondItem="VSL-i2-Kd8" secondAttribute="trailing" id="aTy-Qw-B9A"/>
+                <constraint firstItem="Lfl-Te-eMd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="doy-f7-aqH"/>
+                <constraint firstItem="Lfl-Te-eMd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pIJ-fH-QBF"/>
+                <constraint firstItem="VSL-i2-Kd8" firstAttribute="top" secondItem="Lfl-Te-eMd" secondAttribute="bottom" constant="49" id="tLM-Zp-2bD"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

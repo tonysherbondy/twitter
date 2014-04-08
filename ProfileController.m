@@ -12,12 +12,16 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 #import "TweetViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface ProfileController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 // these will be mentions
 @property (nonatomic, strong) NSMutableArray *tweets;
+
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, strong) NSString *backgroundImageURL;
 @end
 
 @implementation ProfileController
@@ -50,30 +54,56 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadTimeline) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    
+    [self loadUserProfile];
+}
+
+- (void)loadUserProfile
+{
+    //    User *user = [User currentUser];
+    if (self.user) {
+        [self.user profileDataWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            self.backgroundImageURL = responseObject[@"profile_background_image_url"];
+            [self refreshUI];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error retrieving profile data for %@", self.user.name);
+            NSLog(@"error: %@", error);
+        }];
+    }
 }
 
 // this should be the overridden method and it should say loadTweets or something
 - (void)loadTimeline
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading...";
-    [[TwitterClient instance] timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        self.tweets = [[Tweet arrayFromJSON:responseObject] mutableCopy];
-        [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"load timeline error");
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self.refreshControl endRefreshing];
-    }];
+    if (self.user) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Loading...";
+        [self.user timelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            self.tweets = [[Tweet arrayFromJSON:responseObject] mutableCopy];
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"load timeline error");
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self.refreshControl endRefreshing];
+        }];
+    }
+}
+
+- (void)setUser:(User *)user
+{
+    _user = user;
+    [self loadUserProfile];
+    [self loadTimeline];
 }
 
 - (void)refreshUI
 {
     [self.tableView reloadData];
+    
+    [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.backgroundImageURL]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
