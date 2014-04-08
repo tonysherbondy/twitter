@@ -16,24 +16,12 @@
 
 @interface ProfileController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
-// these will be mentions
-@property (nonatomic, strong) NSMutableArray *tweets;
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (nonatomic, strong) NSString *backgroundImageURL;
 @end
 
 @implementation ProfileController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self loadTimeline];
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -54,6 +42,21 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(loadTimeline) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    
+    [self loadUserProfile];
+}
+
+- (void)setupNavbar
+{
+    self.navigationItem.title = @"Profile";
+}
+
+- (void)setupTable
+{
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    UINib *tweetCellNib = [UINib nibWithNibName:@"TweetCell" bundle:nil];
+    [self.tableView registerNib:tweetCellNib forCellReuseIdentifier:@"TweetCell"];
     
     [self loadUserProfile];
 }
@@ -102,47 +105,7 @@
 - (void)refreshUI
 {
     [self.tableView reloadData];
-    
     [self.backgroundImageView setImageWithURL:[NSURL URLWithString:self.backgroundImageURL]];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.tweets.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
-    cell.tweet = self.tweets[indexPath.row];
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Tweet *tweet = self.tweets[indexPath.row];
-    
-    // Need to consider the retweet header changing size
-    
-    // replace magic numbers with prototype cell
-    int textWidth = 220;
-    int heightOffset = 90;
-    
-    CGRect textRect = [tweet.text boundingRectWithSize:CGSizeMake(textWidth, CGFLOAT_MAX)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                            attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}
-                                               context:nil];
-    return ceilf(textRect.size.height) + heightOffset;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    TweetViewController *tweetVC = [[TweetViewController alloc] init];
-    tweetVC.tweet = self.tweets[indexPath.row];
-    tweetVC.refreshDelegate = self;
-    [self.navigationController pushViewController:tweetVC animated:YES];
 }
 
 @end

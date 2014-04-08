@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RefreshableProtocol.h"
+#import "BaseTweetsViewController.h"
 #import "User.h"
 
-@interface ProfileController : UIViewController <UITableViewDataSource, UITableViewDelegate, RefreshableProtocol>
+@interface ProfileController : BaseTweetsViewController
 @property (nonatomic, strong) User *user;
 @end
