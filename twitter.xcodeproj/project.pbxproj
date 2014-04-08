@@ -10,6 +10,8 @@
 		9D39BB324CD1429299BB9AD3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC9A25BD02B448DA146D17A /* libPods.a */; };
 		BB2A8EF918F46E49008778E7 /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2A8EF718F46E49008778E7 /* ProfileController.m */; };
 		BB2A8EFA18F46E49008778E7 /* ProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2A8EF818F46E49008778E7 /* ProfileController.xib */; };
+		BB2A8EFE18F48507008778E7 /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2A8EFC18F48507008778E7 /* MentionsViewController.m */; };
+		BB2A8EFF18F48507008778E7 /* MentionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2A8EFD18F48507008778E7 /* MentionsViewController.xib */; };
 		BB8700C418E8A957005A0623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8700C318E8A957005A0623 /* Foundation.framework */; };
 		BB8700C618E8A957005A0623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8700C518E8A957005A0623 /* CoreGraphics.framework */; };
 		BB8700C818E8A957005A0623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB8700C718E8A957005A0623 /* UIKit.framework */; };
@@ -57,6 +59,9 @@
 		BB2A8EF618F46E49008778E7 /* ProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileController.h; sourceTree = "<group>"; };
 		BB2A8EF718F46E49008778E7 /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
 		BB2A8EF818F46E49008778E7 /* ProfileController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileController.xib; sourceTree = "<group>"; };
+		BB2A8EFB18F48507008778E7 /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
+		BB2A8EFC18F48507008778E7 /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
+		BB2A8EFD18F48507008778E7 /* MentionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsViewController.xib; sourceTree = "<group>"; };
 		BB39972418EB889E0095A71A /* RefreshableProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshableProtocol.h; sourceTree = "<group>"; };
 		BB8700C018E8A957005A0623 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8700C318E8A957005A0623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -237,6 +242,9 @@
 				BB2A8EF618F46E49008778E7 /* ProfileController.h */,
 				BB2A8EF718F46E49008778E7 /* ProfileController.m */,
 				BB2A8EF818F46E49008778E7 /* ProfileController.xib */,
+				BB2A8EFB18F48507008778E7 /* MentionsViewController.h */,
+				BB2A8EFC18F48507008778E7 /* MentionsViewController.m */,
+				BB2A8EFD18F48507008778E7 /* MentionsViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -356,6 +364,7 @@
 				BB2A8EFA18F46E49008778E7 /* ProfileController.xib in Resources */,
 				BBFCC17618EB3D1D00705618 /* TweetCell.xib in Resources */,
 				BB8700F618E8AA1B005A0623 /* TweetsViewController.xib in Resources */,
+				BB2A8EFF18F48507008778E7 /* MentionsViewController.xib in Resources */,
 				BB8700CE18E8A957005A0623 /* InfoPlist.strings in Resources */,
 				BB8700D618E8A957005A0623 /* Images.xcassets in Resources */,
 			);
@@ -412,6 +421,7 @@
 				BBFCC17118EA2DEB00705618 /* Tweet.m in Sources */,
 				BBFCC16E18EA1C4300705618 /* User.m in Sources */,
 				BB8700FB18E8ACCB005A0623 /* TweetViewController.m in Sources */,
+				BB2A8EFE18F48507008778E7 /* MentionsViewController.m in Sources */,
 				BBFCC17518EB3D1D00705618 /* TweetCell.m in Sources */,
 				BB2A8EF918F46E49008778E7 /* ProfileController.m in Sources */,
 				BB8700D418E8A957005A0623 /* AppDelegate.m in Sources */,

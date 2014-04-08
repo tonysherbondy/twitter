@@ -9,6 +9,7 @@
 #import "HamburgerMenuViewController.h"
 #import "TweetsViewController.h"
 #import "ProfileController.h"
+#import "MentionsViewController.h"
 
 @interface HamburgerMenuViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *profileButton;
 @property (weak, nonatomic) IBOutlet UIButton *timelineButton;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIButton *mentionsButton;
 @end
 
 @implementation HamburgerMenuViewController
@@ -89,6 +91,18 @@ static const CGFloat sizeOpenMenu = 100;
     } completion:^(BOOL finished) {
         if (![self.navController.topViewController isKindOfClass:[TweetsViewController class]]) {
             [self.navController popToRootViewControllerAnimated:YES];
+        };
+    }];
+}
+
+- (IBAction)onMentionsButtonClick:(UIButton *)sender
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        [self closeMenu];
+    } completion:^(BOOL finished) {
+        if (![self.navController.topViewController isKindOfClass:[MentionsViewController class]]) {
+            MentionsViewController *mvc = [[MentionsViewController alloc] init];
+            [self.navController pushViewController:mvc animated:YES];
         };
     }];
 }

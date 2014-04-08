@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="contentView" destination="Fgm-vL-CaF" id="O67-0K-VwM"/>
                 <outlet property="logoutButton" destination="CwO-p2-Rvo" id="gzr-6t-loZ"/>
+                <outlet property="mentionsButton" destination="fkG-dK-3Rn" id="Ie1-aN-iQh"/>
                 <outlet property="profileButton" destination="Hvi-aS-Wp5" id="VBX-ft-S40"/>
                 <outlet property="timelineButton" destination="ynP-ek-tL1" id="PPp-Ew-lu0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -55,6 +56,17 @@
                                 <action selector="onLogoutButtonClick:" destination="-1" eventType="touchUpInside" id="8uG-oV-qdD"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkG-dK-3Rn">
+                            <rect key="frame" x="20" y="78" width="64" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Mentions">
+                                <color key="titleColor" red="0.0" green="0.72165830289999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onMentionsButtonClick:" destination="-1" eventType="touchUpInside" id="6ar-cf-93l"/>
+                            </connections>
+                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgm-vL-CaF">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -69,12 +81,14 @@
                         <constraint firstItem="Hvi-aS-Wp5" firstAttribute="top" secondItem="Nov-I4-JBR" secondAttribute="top" constant="20" id="5aC-1S-BZc"/>
                         <constraint firstItem="Fgm-vL-CaF" firstAttribute="top" secondItem="Nov-I4-JBR" secondAttribute="top" id="6B3-Ah-gG7"/>
                         <constraint firstItem="ynP-ek-tL1" firstAttribute="top" secondItem="Nov-I4-JBR" secondAttribute="top" constant="49" id="HBv-Tg-ImX"/>
+                        <constraint firstItem="fkG-dK-3Rn" firstAttribute="leading" secondItem="Nov-I4-JBR" secondAttribute="leading" constant="20" id="MtX-8d-Phh"/>
                         <constraint firstItem="CwO-p2-Rvo" firstAttribute="leading" secondItem="Nov-I4-JBR" secondAttribute="leading" constant="20" id="Nl4-eT-Dgz"/>
                         <constraint firstAttribute="bottom" secondItem="Fgm-vL-CaF" secondAttribute="bottom" id="SZu-tC-01r"/>
                         <constraint firstItem="Hvi-aS-Wp5" firstAttribute="leading" secondItem="Nov-I4-JBR" secondAttribute="leading" constant="20" id="Tnn-Jf-Rka"/>
                         <constraint firstAttribute="bottom" secondItem="CwO-p2-Rvo" secondAttribute="bottom" constant="20" id="ZWk-pH-lAz"/>
                         <constraint firstAttribute="trailing" secondItem="Fgm-vL-CaF" secondAttribute="trailing" id="gTo-iG-JQ8"/>
                         <constraint firstItem="ynP-ek-tL1" firstAttribute="leading" secondItem="Nov-I4-JBR" secondAttribute="leading" constant="20" id="hQ7-JL-ArF"/>
+                        <constraint firstItem="fkG-dK-3Rn" firstAttribute="top" secondItem="Hvi-aS-Wp5" secondAttribute="bottom" constant="28" id="vNP-7K-4bD"/>
                     </constraints>
                 </view>
             </subviews>
